@@ -10,18 +10,11 @@ const { addUser, getUser, getUsersInRoom, removeUser } = require('./utils/users'
 const port = process.env.PORT
 const app = express()
 
-//kludge code to allow the client mustache code to see dynamic variables
-hbs.registerHelper('raw', function (value) {
-    return value.fn()
-});
-
 //this is normally done automatically, but is
 //necessary to do it explicitly for socket.io
 const server = http.createServer(app)
 
 const io = socketio(server)
-
-// app.use(express.json())
 
 //define paths for express config
 const publicDirectoryPath = path.join(__dirname, '../public')

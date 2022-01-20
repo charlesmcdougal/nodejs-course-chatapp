@@ -8,9 +8,6 @@ const $locationButton = document.querySelector('#send-location')
 const $messages = document.querySelector('#messages')
 const $sidebar = document.querySelector('#sidebar')
 
-//Templates
-// const messageTemplate = document.querySelector('#message-template').innerHTML
-
 //Options
 const { username, room } = Qs.parse(location.search, { ignoreQueryPrefix: true })
 

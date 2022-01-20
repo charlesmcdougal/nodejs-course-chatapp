@@ -1,21 +1,20 @@
 const users = []
 
 const addUser = ({ id, username, room }) => {
-    //Clean the data
-    username = username.trim().toLowerCase()
-    room = room.trim().toLowerCase()
 
-    //validate data
+    // first check if a user or room was actually passed
     if (!username || !room) {
         return {
             error: 'Both a username and room are required.'
         }
     }
 
+    // then clean the data
+    username = username.trim()
+    room = room.trim().toLowerCase()
+
     //check for existing user
-    const existingUser = users.find((user) => {
-        return user.room === room && user.username === username 
-    })
+    const existingUser = users.find((user) => user.room === room && user.username.toLowerCase() === username.toLowerCase())
 
     //validate username
     if(existingUser) {
@@ -25,7 +24,7 @@ const addUser = ({ id, username, room }) => {
     }
 
     //check for reserved names
-    if(username === 'admin') {
+    if(username.toLowerCase() === 'admin') {
         return {
             error: 'The name you have selected is reserved. Please choose another.'
         }
